@@ -1,18 +1,17 @@
 #!/usr/bin/env python3
-# 🔱 LØGHØST-Z 💀 – وحدة استغلال تيك توك
-# جمع بيانات حسابات TikTok
+# 🔱 LØGHØST-Z 💀 – وحدة استغلال تيك توك (معدلة لتجنب التعارض)
 
 import requests
 import json
 import re
 
-class TikTokExploit:
+# تم تغيير اسم الكلاس
+class TikTokExploitUtils:
     def __init__(self):
         self.session = requests.Session()
         self.base_url = "https://www.tiktok.com"
 
     def get_user_info(self, username):
-        """جلب معلومات مستخدم TikTok"""
         try:
             url = f"https://www.tiktok.com/api/v1/user/detail/?unique_id={username}"
             response = self.session.get(url)
@@ -33,7 +32,6 @@ class TikTokExploit:
             return {"error": str(e)}
 
     def get_user_videos(self, username, limit=10):
-        """جلب فيديوهات المستخدم"""
         try:
             url = f"https://www.tiktok.com/api/v1/user/posts/?unique_id={username}&count={limit}"
             response = self.session.get(url)
@@ -53,20 +51,12 @@ class TikTokExploit:
         except:
             return []
 
-    def exploit_tiktok_xss(self, username):
-        """استغلال ثغرة XSS في TikTok"""
-        payload = f"<script>alert('XSS on {username}')</script>"
-        return {
-            "username": username,
-            "payload": payload,
-            "status": "vulnerable" if username else "safe"
-        }
-
-    def extract_phone_from_tiktok(self, username):
-        """محاولة استخراج رقم الهاتف من حساب TikTok (نادر)"""
-        # هذه محاكاة – لا يمكن استخراج الرقم عبر API
-        return {
-            "username": username,
-            "phone": "غير متاح عبر API",
-            "note": "لا يمكن استخراج رقم الهاتف من TikTok عبر API"
-        }
+# دالة للاستخدام المباشر في البوت (تم تغيير الاسم)
+async def tiktok_exploit_utils(update, context):
+    user = update.effective_user
+    await update.message.reply_text(
+        "🎵 **استغلال TikTok**\n\n"
+        "📌 يتم جمع معلومات الحساب عبر API.\n"
+        "⚠️ هذه الخدمة قيد التطوير.",
+        parse_mode="Markdown"
+    )
