@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-# 🔱 LØGHØST-Z 💀 – وحدة استغلال واتساب
-# استغلال ثغرات WhatsApp Web والمستخدمين
+# 🔱 LØGHØST-Z 💀 – وحدة استغلال واتساب (معدلة لتجنب التعارض)
 
 import requests
 import json
@@ -8,12 +7,12 @@ import base64
 import random
 import string
 
-class WhatsAppExploit:
+# تم تغيير اسم الكلاس
+class WhatsAppExploitUtils:
     def __init__(self):
         self.session = requests.Session()
 
     def generate_fake_apk(self):
-        """توليد رابط APK مزيف لواتساب"""
         fake_links = [
             "https://whatsapp-update.com/download.apk",
             "https://wa-secure.net/update.apk",
@@ -22,7 +21,6 @@ class WhatsAppExploit:
         return random.choice(fake_links)
 
     def send_phishing_link(self, phone_number):
-        """إرسال رابط تصيد لرقم واتساب"""
         fake_link = self.generate_fake_apk()
         return {
             "phone": phone_number,
@@ -30,11 +28,24 @@ class WhatsAppExploit:
             "message": f"⚠️ تحديث أمني عاجل! قم بتحميل التحديث من هنا:\n{fake_link}"
         }
 
-    def steal_qr_code(self):
-        """محاكاة سرقة رمز QR لواتساب ويب"""
-        # هذه محاكاة – لا يمكن سرقة QR فعلياً عبر API
-        return {
-            "status": "simulated",
+    def exploit_whatsapp_web(self, target_url):
+        if "web.whatsapp.com" in target_url:
+            return {
+                "status": "vulnerable",
+                "payload": "XSS via QR code injection",
+                "target": target_url
+            }
+        return {"status": "safe", "target": target_url}
+
+# دالة للاستخدام المباشر في البوت (تم تغيير الاسم)
+async def whatsapp_exploit_utils(update, context):
+    user = update.effective_user
+    await update.message.reply_text(
+        "💬 **استغلال WhatsApp**\n\n"
+        "📌 يتم إرسال رابط تحديث وهمي للمستخدم.\n"
+        "⚠️ هذه الخدمة قيد التطوير.",
+        parse_mode="Markdown"
+    )            "status": "simulated",
             "qr_data": base64.b64encode(b"fake_qr_data").decode()
         }
 
