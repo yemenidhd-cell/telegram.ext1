@@ -1,0 +1,10 @@
+*.pyc
+__pycache__/
+hacker_data.db
+*.apk
+*.exe
+*.sh
+logs/
+.env
+*.wav
+*.jpg

@@ -1,0 +1,9 @@
+python-telegram-bot==20.3
+requests==2.31.0
+flask==2.3.3
+gunicorn==21.2.0
+pycryptodome==3.20.0
+cryptography==41.0.3
+pyarmor==8.2.0
+uncompyle6==3.9.1
+pyinstxtractor==0.1.0

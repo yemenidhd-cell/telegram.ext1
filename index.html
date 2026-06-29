@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔱 LØGHØST-Z 💀 – لوحة التحكم</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #e0e0e0;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border-radius: 28px;
+            padding: 40px 35px;
+            max-width: 600px;
+            width: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.03);
+            transition: all 0.3s ease;
+        }
+
+        .container:hover {
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.06);
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .logo h1 {
+            font-size: 32px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ff416c, #ff4b2b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+        }
+
+        .logo p {
+            color: #8888aa;
+            font-size: 14px;
+            margin-top: 6px;
+        }
+
+        .status-card {
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 16px;
+            padding: 18px 20px;
+            margin-bottom: 25px;
+            border-left: 4px solid #00ffcc;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .status-card .stat {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+        }
+
+        .status-card .stat span {
+            color: #aaaacc;
+        }
+
+        .status-card .stat strong {
+            color: #00ffcc;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .btn {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 14px;
+            padding: 16px 12px;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 600;
+            color: #ccccee;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-2px);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .btn .icon {
+            font-size: 28px;
+        }
+
+        .btn .label {
+            font-size: 12px;
+            color: #777799;
+        }
+
+        .btn-green {
+            border-color: #00ff88;
+        }
+        .btn-green:hover {
+            border-color: #00ff88;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.08);
+        }
+
+        .btn-red {
+            border-color: #ff4466;
+        }
+        .btn-red:hover {
+            border-color: #ff4466;
+            box-shadow: 0 0 20px rgba(255, 68, 102, 0.08);
+        }
+
+        .btn-yellow {
+            border-color: #ffcc00;
+        }
+        .btn-yellow:hover {
+            border-color: #ffcc00;
+            box-shadow: 0 0 20px rgba(255, 204, 0, 0.08);
+        }
+
+        .btn-blue {
+            border-color: #4488ff;
+        }
+        .btn-blue:hover {
+            border-color: #4488ff;
+            box-shadow: 0 0 20px rgba(68, 136, 255, 0.08);
+        }
+
+        .btn-orange {
+            border-color: #ff8800;
+        }
+        .btn-orange:hover {
+            border-color: #ff8800;
+            box-shadow: 0 0 20px rgba(255, 136, 0, 0.08);
+        }
+
+        .btn-purple {
+            border-color: #aa44ff;
+        }
+        .btn-purple:hover {
+            border-color: #aa44ff;
+            box-shadow: 0 0 20px rgba(170, 68, 255, 0.08);
+        }
+
+        .btn-full {
+            grid-column: 1 / -1;
+        }
+
+        .footer {
+            margin-top: 25px;
+            text-align: center;
+            font-size: 11px;
+            color: #444466;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            padding-top: 18px;
+        }
+
+        .footer a {
+            color: #6666aa;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: #8888cc;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 25px 15px;
+            }
+            .grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+            .btn {
+                padding: 14px 8px;
+                font-size: 12px;
+            }
+            .btn .icon {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Logo -->
+        <div class="logo">
+            <h1>🔱 LØGHØST-Z 💀</h1>
+            <p>لوحة تحكم البوت الخارق – v3.0</p>
+        </div>
+
+        <!-- حالة البوت -->
+        <div class="status-card">
+            <div class="stat">
+                <span>🟢 الحالة:</span>
+                <strong>يعمل</strong>
+            </div>
+            <div class="stat">
+                <span>👥 الضحايا:</span>
+                <strong id="victimCount">0</strong>
+            </div>
+            <div class="stat">
+                <span>📦 العمليات:</span>
+                <strong id="opCount">0</strong>
+            </div>
+        </div>
+
+        <!-- الأزرار -->
+        <div class="grid">
+            <a href="#" class="btn btn-green" onclick="exploit('android')">
+                <span class="icon">📱</span>
+                استغلال Android
+                <span class="label">APK خبيث</span>
+            </a>
+            <a href="#" class="btn btn-blue" onclick="exploit('windows')">
+                <span class="icon">💻</span>
+                استغلال Windows
+                <span class="label">EXE خبيث</span>
+            </a>
+            <a href="#" class="btn btn-yellow" onclick="exploit('linux')">
+                <span class="icon">🐧</span>
+                استغلال Linux
+                <span class="label">Shell خبيث</span>
+            </a>
+            <a href="#" class="btn btn-orange" onclick="exploit('whatsapp')">
+                <span class="icon">💬</span>
+                استغلال WhatsApp
+                <span class="label">رابط خبيث</span>
+            </a>
+            <a href="#" class="btn btn-purple" onclick="exploit('telegram')">
+                <span class="icon">✈️</span>
+                استغلال Telegram
+                <span class="label">ثغرة XSS</span>
+            </a>
+            <a href="#" class="btn btn-red" onclick="exploit('camera')">
+                <span class="icon">📸</span>
+                تصوير الكاميرا
+                <span class="label">لقطة فورية</span>
+            </a>
+            <a href="#" class="btn btn-green btn-full" onclick="exploit('payload')">
+                <span class="icon">📦</span>
+                توليد وإرسال حمولة مخصصة
+                <span class="label">Payload Generator</span>
+            </a>
+        </div>
+
+        <!-- معلومات إضافية -->
+        <div style="margin-top: 20px; font-size: 12px; color: #555577; text-align: center; background: rgba(255,255,255,0.02); padding: 12px; border-radius: 12px;">
+            ⚠️ جميع العمليات مسجلة في قاعدة البيانات. استخدم بحذر.
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            🔱 LØGHØST-Z 💀 &bull; <a href="https://t.me/Venom400" target="_blank">@Venom400</a> &bull; v3.0
+        </div>
+    </div>
+
+    <script>
+        // محاكاة عملية استغلال
+        function exploit(type) {
+            const names = {
+                android: '📱 Android',
+                windows: '💻 Windows',
+                linux: '🐧 Linux',
+                whatsapp: '💬 WhatsApp',
+                telegram: '✈️ Telegram',
+                camera: '📸 الكاميرا',
+                payload: '📦 الحمولة'
+            };
+            alert(`✅ جاري تنفيذ هجوم: ${names[type] || type}\nسيتم إرسال الحمولة للمستخدم المستهدف.`);
+            
+            // تحديث العداد
+            let count = parseInt(document.getElementById('opCount').innerText) || 0;
+            document.getElementById('opCount').innerText = count + 1;
+            
+            // تحديث عدد الضحايا بشكل عشوائي
+            let victims = parseInt(document.getElementById('victimCount').innerText) || 0;
+            document.getElementById('victimCount').innerText = victims + Math.floor(Math.random() * 2) + 1;
+        }
+
+        // تحديث الإحصائيات كل 5 ثوانٍ (محاكاة)
+        setInterval(() => {
+            let victims = parseInt(document.getElementById('victimCount').innerText) || 0;
+            if (Math.random() > 0.7) {
+                document.getElementById('victimCount').innerText = victims + Math.floor(Math.random() * 3);
+            }
+        }, 5000);
+    </script>
+</body>
+</html>
